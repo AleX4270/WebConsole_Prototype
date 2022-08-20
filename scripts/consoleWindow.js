@@ -1,4 +1,6 @@
-class Console
+import "./consoleParser";
+
+class ConsoleWindow
 {
     constructor()
     {
@@ -48,4 +50,4 @@ class Console
     }
 }
 
-const cmd = new Console();
+const cmd = new ConsoleWindow();
