@@ -1,0 +1,6 @@
+{
+  "help": "Display available commands",
+  "ping": "Pong!",
+  "unknown": "I don't know that command yet...",
+  "clear": "clear"
+}

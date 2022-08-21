@@ -12,13 +12,14 @@ main
     width: 100vw;
     height: 100vh;
     background-color: black;
+
+    overflow: scroll;
 }
 
 .consoleWindow
 {
     width: 99vw;
     height: 100vh;
-    background-color: black;
 
     padding: 5px;
 }

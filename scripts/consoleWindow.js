@@ -1,7 +1,11 @@
-import "./consoleParser";
+import {ConsoleParser} from "./consoleParser.js";
 
 class ConsoleWindow
 {
+    command = "";
+    exeResult = "";
+    parser = new ConsoleParser();
+
     constructor()
     {
         this.cform = document.querySelector(".consoleWindow");
@@ -25,10 +29,8 @@ class ConsoleWindow
 
         this.inputBox.append(this.cin);
 
-        const sign = document.createElement("span");
-        sign.classList.add("inputMark");
-        sign.innerHTML = "&gt;";
-        this.cin.before(sign);
+        this.cin.insertAdjacentHTML("beforebegin",
+            "<span style='color: lightgreen;'>&gt;</span>");
 
     }
 
@@ -42,11 +44,10 @@ class ConsoleWindow
 
     handleConsoleInput()
     {
-        let command = this.cin.value;
+        this.command = this.cin.value;
         this.cin.value = "";
-        //Send the string to the parser
-        //Get the result of executing the command
-        this.inputBox.insertAdjacentHTML('beforebegin', command + '</br>');
+        this.exeResult = this.parser.parseCommand(this.command);
+        this.inputBox.insertAdjacentHTML('beforebegin', this.exeResult.toString() + '</br>');
     }
 }
 
