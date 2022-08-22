@@ -1,6 +1,6 @@
 {
-  "help": "Display available commands",
+  "help": "--------------------------------- <br> This is just a template console, but there are still some commands that you can use <br> <br> [help] - displays this message <br> [ping] - that's a secret <br> ---------------------------------",
   "ping": "Pong!",
   "unknown": "I don't know that command yet...",
-  "clear": "clear"
+  "clear": "exe_clear"
 }

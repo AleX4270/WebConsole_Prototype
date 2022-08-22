@@ -1,7 +1,14 @@
+const CmdType = {
+    help: "help",
+    ping: "ping",
+    test: "test",
+    clear: "clear"
+}
+
 export class ConsoleParser
 {
-    cmdResult = "";
-    cmdResponses = "";
+    executionResult;
+    commandResponses;
 
     constructor()
     {
@@ -13,7 +20,7 @@ export class ConsoleParser
         fetch("scripts/commands.json")
             .then(res => res.json())
             .then(res => {
-                this.cmdResponses = res;
+                this.commandResponses = res;
             });
     }
 
@@ -21,34 +28,22 @@ export class ConsoleParser
     {
         switch(command)
         {
-            case "help":
-                this.cmdResult = this.cmdResponses["help"];
+            case CmdType.help:
+                this.executionResult = this.commandResponses["help"];
                 break;
 
-            case "ping":
-                this.cmdResult = this.cmdResponses["ping"];
+            case CmdType.ping:
+                this.executionResult = this.commandResponses["ping"];
                 break;
 
-            case "test":
-                this.cmdResult = "Test";
-                break;
-
-            case "clear":
-                this.cmdResult = this.cmdResponses["clear"];
+            case CmdType.clear:
+                this.executionResult = this.commandResponses["clear"];
                 break;
 
             default:
-                this.cmdResult = this.cmdResponses["unknown"];
+                this.executionResult = this.commandResponses["unknown"];
         }
 
-        return this.cmdResult;
+        return this.executionResult;
     }
-
-    //Commands
-    cmdHelp()
-    {
-        return "";
-    }
-
-
 }

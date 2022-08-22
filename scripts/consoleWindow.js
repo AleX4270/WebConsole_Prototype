@@ -2,13 +2,22 @@ import {ConsoleParser} from "./consoleParser.js";
 
 class ConsoleWindow
 {
-    command = "";
-    exeResult = "";
-    parser = new ConsoleParser();
+    //Computing
+    command;
+    commandResult;
+
+    //Objects
+    parser;
+
+    //UI Elements
+    consoleWindow;
+    inputContainer;
+    consoleInput;
 
     constructor()
     {
-        this.cform = document.querySelector(".consoleWindow");
+        this.consoleWindow = document.querySelector(".consoleWindow");
+        this.parser  = new ConsoleParser();
 
         this.initInputField();
         this.initConsoleInteraction();
@@ -16,39 +25,67 @@ class ConsoleWindow
 
     initInputField()
     {
-        this.inputBox = document.createElement("div");
-        this.inputBox.classList.add("inputBox")
+        this.inputContainer = document.createElement("div");
+        this.inputContainer.classList.add("inputContainer")
 
-        this.cform.append(this.inputBox);
+        this.consoleWindow.append(this.inputContainer);
 
-        this.cin = document.createElement("input");
-        this.cin.classList.add("consoleInput");
-        this.cin.maxLength = 100;
-        this.cin.type = "text";
-        this.cin.autofocus = true;
+        this.consoleInput = document.createElement("input");
+        this.consoleInput.classList.add("consoleInput");
+        this.consoleInput.maxLength = 100;
+        this.consoleInput.type = "text";
+        this.consoleInput.autofocus = true;
 
-        this.inputBox.append(this.cin);
+        this.inputContainer.append(this.consoleInput);
 
-        this.cin.insertAdjacentHTML("beforebegin",
-            "<span style='color: lightgreen;'>&gt;</span>");
-
+        this.consoleInput.insertAdjacentHTML("beforebegin",
+            "<span style='color: lawngreen; font-weight: bold;'>&gt; </span>");
     }
 
     initConsoleInteraction()
     {
-        this.cform.addEventListener("submit", (event) => {
-            event.preventDefault();
-            this.handleConsoleInput();
+        this.consoleWindow.addEventListener("keyup", (event) => {
+            if(event.key === "Enter") this.readConsoleInput();
         });
     }
 
-    handleConsoleInput()
+    readConsoleInput()
     {
-        this.command = this.cin.value;
-        this.cin.value = "";
-        this.exeResult = this.parser.parseCommand(this.command);
-        this.inputBox.insertAdjacentHTML('beforebegin', this.exeResult.toString() + '</br>');
+        this.command = this.consoleInput.value.trim();
+
+        if(this.command.length === 0) return;
+
+        this.consoleInput.value = "";
+        this.commandResult = this.parser.parseCommand(this.command);
+
+        if(this.commandResult.includes("exe_"))
+        {
+
+            switch(this.commandResult)
+            {
+                case "exe_clear":
+                    this.clearConsoleWindow();
+                    break;
+            }
+        }
+        else
+        {
+            this.inputContainer.insertAdjacentHTML('beforebegin',
+                "<div class='resultContainer'>" + this.commandResult + "<br></div>");
+        }
+
+        this.consoleWindow.scrollTop = this.consoleWindow.scrollHeight;
+    }
+
+    //Maintenance commands
+    clearConsoleWindow()
+    {
+        let elements = document.querySelectorAll(".resultContainer");
+
+        elements.forEach((el) => {
+            this.consoleWindow.removeChild(el);
+        })
     }
 }
 
-const cmd = new ConsoleWindow();
+const terminal = new ConsoleWindow();

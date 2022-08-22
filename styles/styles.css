@@ -5,28 +5,25 @@ body
 
     font-family: Consolas, serif;
     font-size: 20px;
-}
 
-main
-{
-    width: 100vw;
-    height: 100vh;
-    background-color: black;
-
-    overflow: scroll;
+    overflow: hidden;
 }
 
 .consoleWindow
 {
-    width: 99vw;
+    width: 100vw;
     height: 100vh;
 
-    padding: 5px;
+    padding: 0 7px;
+
+    overflow: scroll;
+
+    background-color: black;
 }
 
-.inputBox
+.inputContainer
 {
-    width: 100%;
+    width: 90%;
     background-color: black;
 }
 
@@ -46,4 +43,10 @@ main
 .consoleInput:focus
 {
     outline: none;
+}
+
+.resultContainer
+{
+    color: cyan;
+    margin-bottom: 5px;
 }
