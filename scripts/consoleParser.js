@@ -2,7 +2,8 @@ const CmdType = {
     help: "help",
     ping: "ping",
     test: "test",
-    clear: "clear"
+    clear: "clear",
+    date: "date"
 }
 
 export class ConsoleParser
@@ -38,6 +39,10 @@ export class ConsoleParser
 
             case CmdType.clear:
                 this.executionResult = this.commandResponses["clear"];
+                break;
+
+            case CmdType.date:
+                this.executionResult = this.commandResponses["date"];
                 break;
 
             default:

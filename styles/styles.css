@@ -9,7 +9,7 @@ body
     overflow: hidden;
 }
 
-.consoleWindow
+.terminalWindow
 {
     width: 100vw;
     height: 100vh;
@@ -27,7 +27,7 @@ body
     background-color: black;
 }
 
-.consoleInput
+.terminalInput
 {
     width: 80%;
 
@@ -40,13 +40,13 @@ body
     border: 0;
 }
 
-.consoleInput:focus
+.terminalInput:focus
 {
     outline: none;
 }
 
 .resultContainer
 {
-    color: cyan;
+    color: aquamarine;
     margin-bottom: 5px;
 }

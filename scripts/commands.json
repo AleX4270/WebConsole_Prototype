@@ -1,6 +1,7 @@
 {
-  "help": "--------------------------------- <br> This is just a template console, but there are still some commands that you can use <br> <br> [help] - displays this message <br> [ping] - that's a secret <br> ---------------------------------",
+  "help": "--------------------------------- <br> This is just a template console, but there are still some commands that you can use <br> <br> [help] - displays this message <br> [ping] - that's a secret <br> [clear] - clears the terminal window <br> [date] - displays current date <br> ---------------------------------",
   "ping": "Pong!",
-  "unknown": "I don't know that command yet...",
-  "clear": "exe_clear"
+  "clear": "exe_clear",
+  "date": "exe_date",
+  "unknown": "This command is not supported!"
 }
