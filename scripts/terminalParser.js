@@ -6,7 +6,7 @@ const CmdType = {
     date: "date"
 }
 
-export class ConsoleParser
+export class TerminalParser
 {
     executionResult;
     commandResponses;
